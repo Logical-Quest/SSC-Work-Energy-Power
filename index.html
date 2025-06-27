@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tutorial</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            background-color: #f8f9fa;
+        }
+        iframe {
+            width: 100%;
+            height: 100vh;
+            border: none;
+            display: block;
+        }
+        .error-message {
+            display: none;
+            text-align: center;
+            color: #d32f2f;
+            font-weight: bold;
+            padding: 20px;
+            background-color: #ffebee;
+            margin: 20px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div id="error-message" class="error-message">
+        Failed to load content. Please check your internet connection or contact support.
+    </div>
+    <iframe 
+        id="physics-iframe"
+        src="https://script.google.com/macros/s/AKfycbwj8zeiiLkm3nqB7qxU2uy-f834193vio2t2hw6co0SxZkyTjQhtB7eEdMMTBXEXOTR/exec"
+        sandbox="allow-scripts allow-same-origin allow-forms allow-top-navigation"
+        onload="handleIframeLoad()"
+        onerror="handleIframeError()">
+    </iframe>
+    <script>
+        function handleIframeLoad() {
+            console.log('Iframe loaded successfully');
+            document.getElementById('error-message').style.display = 'none';
+        }
+
+        function handleIframeError() {
+            console.error('Iframe failed to load');
+            document.getElementById('error-message').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
